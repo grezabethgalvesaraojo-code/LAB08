@@ -1,5 +1,3 @@
-// src/main/java/com/<your_lastname>/lab7/ProductController.java
-
 package com.ARAOJO.LAB07.controller;
 
 import com.ARAOJO.LAB07.model.Product;

@@ -1,0 +1,34 @@
+# Defines the Product type, mapping directly to your Product.java model
+type Product {
+    id: ID! # Unique identifier, non-nullable
+    name: String! # Name of the product, non-nullable
+    price: Float! # Price of the product, non-nullable
+}
+
+# Defines the input structure for creating or updating a Product
+# This allows us to pass product details without the ID in mutations
+input ProductInput {
+    name: String!
+    price: Float!
+}
+
+# Queries are used for fetching data (like GET requests in REST)
+type Query {
+    # Fetches all products
+    findAllProducts: [Product!]!
+
+    # Fetches a single product by its ID
+    productById(id: ID!): Product
+}
+
+# Mutations are used for changing data (like POST, PUT, DELETE in REST)
+type Mutation {
+    # Creates a new product. Accepts ProductInput and returns the newly created Product (with its generated ID)
+    createProduct(product: ProductInput!): Product!
+
+    # Updates an existing product. Accepts ID and ProductInput. Returns the updated Product or null if not found.
+    updateProduct(id: ID!, product: ProductInput!): Product
+
+    # Deletes a product by ID. Returns a boolean indicating success.
+    deleteProduct(id: ID!): Boolean!
+}
